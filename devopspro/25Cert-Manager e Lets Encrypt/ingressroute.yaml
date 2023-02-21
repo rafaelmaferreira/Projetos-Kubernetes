@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: simpleingressroute
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(maferreira94.shop)
+    kind: Rule
+    services:
+    - name: nginx-service
+      port: 80
+    middlewares: 
+      - name: ratelimit

@@ -1,0 +1,14 @@
+api:
+  image: rafaferreira011/pedelogo-catalogo:v1.0.0
+  serviceType: ClusterIP
+  ingress:
+  - maferreira94.shop
+
+mongodb:
+  auth:
+    rootPassword: mongoRoot
+    username: monguser
+    password: mongopwd
+    database: produto
+  persistence:
+    enabled: true
