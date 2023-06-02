@@ -1,0 +1,16 @@
+version: '3'
+services:
+  store:
+    image: linuxtips/nginx-prometheus-exporter:1.0.0
+    networks:
+     - traefik-public
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.store.rule=Host(`store.maferreira94.shop)"
+        - "traefik.http.routers.store.entrypoints=websecure"
+        - "traefik.http.routers.store.tls.certresolver=letsencryptresolver"
+        - "traefik.http.services.store.loadbalancer.server.port=80"
+networks:
+  traefik-public:
+    external: true

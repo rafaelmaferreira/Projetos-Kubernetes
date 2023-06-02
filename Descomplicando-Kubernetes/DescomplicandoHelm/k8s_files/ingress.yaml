@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+  name: giropops
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: vm-lnx1.brazilsouth.cloudapp.azure.com
+    http:
+      paths:
+      - backend:
+          serviceName: giropops
+          servicePort: 80
+        path: /
