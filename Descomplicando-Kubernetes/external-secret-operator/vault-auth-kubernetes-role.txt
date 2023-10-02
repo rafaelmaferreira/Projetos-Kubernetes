@@ -1,0 +1,5 @@
+vault write auth/kubernetes/role/girus-app \
+    bound_service_account_names=girus-app \
+    bound_service_account_namespaces=default \
+    policies=girus-app \
+    ttl=24h

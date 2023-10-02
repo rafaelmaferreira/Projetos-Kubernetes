@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: meu-pod
+spec:
+  containers:
+  - name: meu-container
+    image: rafaferreira011/imersao-gpt-webapp:v7
+  imagePullSecrets:
+  - name: dockerhub-test

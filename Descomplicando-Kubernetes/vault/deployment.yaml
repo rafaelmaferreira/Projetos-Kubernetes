@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+  namespace: vault
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "giropops"
+        vault.hashicorp.com/agent-inject-secret-database-giropops.txt: "internal/data/database/config"
+      labels:
+        app: nginx
+    spec:
+      serviceAccountName: giropops
+      containers:
+      - image: nginx
+        name: nginx

@@ -1,0 +1,5 @@
+vault policy write girus-app - <<EOH
+path "girus/palavra" {
+    capabilities = ["create","read","update","delete","list"]
+}
+EOH

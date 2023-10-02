@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opa
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "girus-app"
+        vault.hashicorp.com/agent-inject-secret-palavra.txt: "girus/palavra"
+      labels:
+        app: nginx
+    spec:
+      serviceAccountName: giropops
+      containers:
+        - image: nginx
+          name: nginx
+

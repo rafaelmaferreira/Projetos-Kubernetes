@@ -1,0 +1,5 @@
+vault policy write giropops - <<EOF
+path "internal/data/database/config" {
+  capabilities = ["read","list","update","create","delete"]
+}
+EOF
